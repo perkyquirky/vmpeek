@@ -1,0 +1,21 @@
+# vmpeek — read-only VM dashboard for TrueNAS Scale.
+
+services:
+  vmpeek:
+    image: ghcr.io/smuwuthie/vmpeek:latest
+    container_name: vmpeek
+    restart: unless-stopped
+
+    ports:
+      - "8088:8088"
+
+    volumes:
+      - /run/truenas_libvirt:/run/truenas_libvirt
+    user: "0:0"
+
+    # Everything below is optional; these are the defaults.
+    # command:
+    #   - "-listen=:8088"
+    #   - "-interval=30s"
+    #   - "-agent-timeout=5"
+    #   - "-log-level=info"
